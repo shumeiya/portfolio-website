@@ -25,7 +25,7 @@ export default function ProjectSection() {
   };
 
   return (
-    <section className="bg-[#FDF9F0] h-[30vh] sm:h-screen">
+    <section className="bg-[#FDF9F0] h-[25vh] sm:h-screen">
       {/* 顶部斜标签条 */}
       <img
         src="/src/assets/ProjectSection/Line1.svg"
