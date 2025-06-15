@@ -2,7 +2,14 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 
 // 抽象为可复用的贴纸组件
-function FloatingImage({ src, alt, className, duration = 3, amplitude = 10, delay = 0 }) {
+function FloatingImage({
+  src,
+  alt,
+  className,
+  duration = 3,
+  amplitude = 10,
+  delay = 0,
+}) {
   const ref = useRef();
 
   useEffect(() => {
@@ -21,7 +28,7 @@ function FloatingImage({ src, alt, className, duration = 3, amplitude = 10, dela
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen bg-[#FDF9F0] px-4">
+    <section className="relative flex flex-col items-center justify-center h-[30vh] sm:h-screen  bg-[#FDF9F0] px-4">
       {/* Top Sticker Row */}
 
       <div className="flex justify-center gap-[12vw]">
@@ -73,5 +80,3 @@ export default function Hero() {
     </section>
   );
 }
-
-  
