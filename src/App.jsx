@@ -3,6 +3,8 @@ import Nav from "./components/NAV";
 import StatementSection from "./pages/AboutSection";
 import BlendeCursor from "./components/RoundCursor";
 import ProjectSection from "./pages/ProjectsSection";
+import ProjectSection2 from "./pages/ProjectsSection2";
+import ContactSection from "./pages/ContactSection";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Hero></Hero>
       <StatementSection />
       <ProjectSection />
+      <ProjectSection2 />
+      <ContactSection />
     </div>
   );
 }

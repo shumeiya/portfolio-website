@@ -50,7 +50,7 @@ export default function ProjectSection() {
         <button onClick={() => paginate(-1)} className="z-10">
           <img
             src="/src/assets/ProjectSection/Arrow.svg"
-            className="w-[6vw] h-auto"
+            className="w-[6vw] h-auto pr-[1.2em]"
           />
         </button>
 
@@ -80,7 +80,7 @@ export default function ProjectSection() {
         <button onClick={() => paginate(1)} className="z-10">
           <img
             src="/src/assets/ProjectSection/Arrow.svg"
-            className="w-[6vw] h-auto rotate-180"
+            className="w-[6vw] h-auto rotate-180 pr-[1.2em]"
           />
         </button>
 
