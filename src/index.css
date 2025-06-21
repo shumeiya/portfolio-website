@@ -31,16 +31,3 @@ button:hover {
   scale: 1.1;
   filter: hue-rotate(180deg);
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #ffffff;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #ffffff;
-  }
-  button {
-    background-color: #ffffff;
-  }
-}
