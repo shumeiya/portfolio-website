@@ -5,6 +5,7 @@ import BlendeCursor from "./components/RoundCursor";
 import ProjectSection from "./pages/ProjectsSection";
 import ProjectSection2 from "./pages/ProjectsSection2";
 import ContactSection from "./pages/ContactSection";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <ProjectSection />
       <ProjectSection2 />
       <ContactSection />
+      <Footer></Footer>
     </div>
   );
 }
