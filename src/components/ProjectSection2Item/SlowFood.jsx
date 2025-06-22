@@ -1,0 +1,83 @@
+import React, { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
+
+const ProjectItem = ({ name, icons }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const iconRefs = useRef([]);
+
+  useEffect(() => {
+    if (isHovered) {
+      iconRefs.current.forEach((ref, index) => {
+        const angle = (index / iconRefs.current.length) * Math.PI * 2;
+        const radius = 60;
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+
+        gsap.to(ref, {
+          x,
+          y,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        });
+
+        gsap.to(ref, {
+          y: y - 10,
+          duration: 1,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+        });
+      });
+    } else {
+      iconRefs.current.forEach((ref) => {
+        gsap.to(ref, {
+          x: 0,
+          y: 0,
+          duration: 0.5,
+          ease: "back.in(1.7)",
+        });
+        gsap.killTweensOf(ref);
+      });
+    }
+  }, [isHovered]);
+
+  return (
+    <div
+      className="relative w-[90vw] h-[9vw] left-1/2 -translate-x-1/2
+      transition-all duration-300 flex  justify-start items-center"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        backgroundImage: `url(${
+          isHovered
+            ? "/src/assets/ProjectSection2/SlowFood/GreenArrow.svg"
+            : "/src/assets/ProjectSection2/WhiteArrow.svg"
+        })`,
+        backgroundSize: "auto 100%",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Project Title */}
+      <div
+        className={`text-[4vw] font-regular pl-[5vw] transition-colors duration-300 ${
+          isHovered ? "text-white" : "text-black"
+        }`}
+      >
+        {name}
+      </div>
+
+      {/* Floating Icons */}
+      {icons.map((icon, i) => (
+        <img
+          key={i}
+          src={icon}
+          ref={(el) => (iconRefs.current[i] = el)}
+          className="relative  w-[5vw] h-[5vw] pointer-events-none"
+        />
+      ))}
+    </div>
+  );
+};
+
+export default ProjectItem;

@@ -9,7 +9,7 @@ import Footer from "./components/footer";
 
 function App() {
   return (
-    <div className="font-unbounded w-screen h-screen cursor-none">
+    <div className="font-unbounded flex-col w-screen h-screen cursor-none">
       <BlendeCursor></BlendeCursor>
       <Nav></Nav>
       <Hero></Hero>
