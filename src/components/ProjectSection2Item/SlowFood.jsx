@@ -48,8 +48,10 @@ const ProjectItem = ({ name, icons }) => {
 
   return (
     <div
-      className="relative z-50 w-[90vw] h-[9vw] left-1/2 -translate-x-1/2
-      transition-all duration-300 flex  justify-start items-center overflow-visible"
+      className={`relative w-[90vw] h-[9vw] left-1/2 -translate-x-1/2
+      transition-all duration-300 flex  justify-start items-center overflow-visible ${
+        isHovered ? "z-50" : "z-1"
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -69,7 +71,7 @@ const ProjectItem = ({ name, icons }) => {
           key={i}
           src={icon}
           ref={(el) => (iconRefs.current[i] = el)}
-          className={`absolute left-[30vw] w-[7vw] h-[7vw] pointer-events-none transition-opacity z-[999] ${
+          className={`absolute left-[30vw] w-[7vw] h-[7vw] pointer-events-none transition-opacity ${
             isHovered ? "opacity-100" : "opacity-0"
           }`}
         />

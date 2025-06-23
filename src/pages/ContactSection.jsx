@@ -21,7 +21,7 @@ export default function ContactSection() {
       />
 
       {/* 中间主内容 */}
-      <div className="bg-[#05A552] h-[20vh] sm:h-[90vh] px-10 sm:px-20 flex flex-col gap-8 relative">
+      <div className="bg-[#05A552] sm:h-[90vh] h-[60vh]  px-10 sm:px-20 flex flex-col gap-8 relative">
         {/* Row 1: 标题 + 两个按钮 */}
         <div className="flex flex-wrap justify-between items-center gap-4">
           <h2 className="text-[3vw] sm:text-[7vw] font-extrabold">
@@ -77,7 +77,7 @@ export default function ContactSection() {
         </div>
 
         {/* Row 3: 左侧文字 + 右侧人物 */}
-        <div className="flex flex-col sm:flex-row text-white items-center justify-between mt-6 gap-6">
+        <div className="flex  h-[10vh] sm:flex-row text-white items-center justify-between mt-6 gap-6">
           <FallingText
             text={`Interactive Critical Collaboration Teamwork Empathy`}
             highlightWords={["Interactive"]}
@@ -86,7 +86,7 @@ export default function ContactSection() {
             backgroundColor="transparent"
             wireframes={false}
             gravity={0.56}
-            fontSize="3rem"
+            fontSize="1rem"
             mouseConstraintStiffness={0.9}
           />
           <div className="w-[17vw]">

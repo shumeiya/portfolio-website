@@ -3,7 +3,7 @@ import SlowFoodItem from "../components/ProjectSection2Item/SlowFood.jsx";
 
 export default function ProjectsSection() {
   return (
-    <section className="h-[45vh] sm:h-[120vh] w-[100vw] relative py-[25vw] sm:py-[15vw]">
+    <section className="h-[35vh] sm:h-[120vh] w-[100vw] relative pt-[30vw] sm:py-[15vw]">
       <div className="flex flex-col justify-center">
         <SlowFoodItem
           name="SlowFood"
