@@ -13,7 +13,7 @@ const FallingText = ({
   wireframes = false,
   gravity = 1,
   mouseConstraintStiffness = 0.2,
-  fontSize = "1rem",
+  fontSize = "3rem",
 }) => {
   const containerRef = useRef(null);
   const textRef = useRef(null);
@@ -224,7 +224,7 @@ const FallingText = ({
         className="inline-block"
         style={{
           fontSize,
-          lineHeight: 1.4,
+          lineHeight: 1.2,
         }}
       />
 
