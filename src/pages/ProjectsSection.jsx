@@ -1,6 +1,23 @@
 import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
+import ScrollVelocity from "../blocks/TextAnimations/ScrollVelocity/ScrollVelocity";
+
+// 可自定义 SVG 条带组件，也可以直接 img
+const SvgLine1 = () => (
+  <img
+    src="/src/assets/ProjectSection/Line1.svg"
+    style={{ height: 100 }}
+    alt="svg1"
+  />
+);
+const SvgLine2 = () => (
+  <img
+    src="/src/assets/ProjectSection/Line2.svg"
+    style={{ height: 100 }}
+    alt="svg2"
+  />
+);
 
 export default function ProjectSection() {
   const [index, setIndex] = useState(0);
@@ -25,22 +42,29 @@ export default function ProjectSection() {
   };
 
   return (
-    <section className="bg-[#FDF9F0] h-[25vh] sm:h-screen">
-      {/* 顶部斜标签条 */}
-      <img
-        src="/src/assets/ProjectSection/Line1.svg"
-        alt="Slanted Tag Bar"
-        className="rotate-[-5deg]"
-      />
+    <section className="relative w-full h-screen  bg-[#FDF9F0] mt-[3vh]">
+      {/* 顶部无限滚动斜标签条 */}
+      <div className="absolute w-full">
+        <ScrollVelocity
+          texts={[<SvgLine1 key={1} />]}
+          velocity={-80}
+          numCopies={6}
+          parallaxClassName="h-[15vh]"
+          scrollerClassName="flex gap-0 -rotate-[5deg]"
+        />
+      </div>
 
       {/* 项目展示区域 */}
-      <div className="relative w-full h-[25vh] sm:h-[80vh] flex items-center justify-center">
+      <div
+        className="relative w-full h-[25vh] sm:h-[80vh] pt-[12vh]
+      flex items-center justify-center"
+      >
         {/* 左侧图片（模糊） */}
         <motion.img
           key={`left-${getImage(-1)}`}
           src={getImage(-1)}
           className="absolute -left-10 w-[18vw] h-[12vw] 
-        opacity-90 blur-xs rotate-[8deg] rounded-xl z-0 pointer-events-none"
+            opacity-90 blur-xs rotate-[8deg] rounded-xl z-0 pointer-events-none"
           initial={{ x: -100, scale: 0.9 }}
           animate={{ x: 0, scale: 0.9 }}
           exit={{ x: 0 }}
@@ -51,6 +75,7 @@ export default function ProjectSection() {
           <img
             src="/src/assets/ProjectSection/Arrow.svg"
             className="w-[6vw] h-auto pr-[1.2em]"
+            alt="Left"
           />
         </button>
 
@@ -73,6 +98,7 @@ export default function ProjectSection() {
               opacity: { duration: 0.3 },
               scale: { duration: 0.3 },
             }}
+            alt="Main"
           />
         </AnimatePresence>
 
@@ -81,6 +107,7 @@ export default function ProjectSection() {
           <img
             src="/src/assets/ProjectSection/Arrow.svg"
             className="w-[6vw] h-auto rotate-180 pr-[1.2em]"
+            alt="Right"
           />
         </button>
 
@@ -89,15 +116,16 @@ export default function ProjectSection() {
           key={`right-${getImage(1)}`}
           src={getImage(1)}
           className="absolute -right-10 w-[18vw] h-[12vw] 
-        pacity-90 blur-xs rotate-[5deg] rounded-xl z-0 pointer-events-none"
+            opacity-90 blur-xs rotate-[5deg] rounded-xl z-0 pointer-events-none"
           initial={{ x: 100, scale: 0.9 }}
           animate={{ x: 0, scale: 0.9 }}
           exit={{ x: 0 }}
           transition={{ duration: 0.4 }}
+          alt="Right Blur"
         />
 
         {/* 底部圆点指示器 */}
-        <div className="absolute bottom-[5%] flex gap-2 z-20">
+        <div className="absolute bottom-[-3%] flex gap-2 z-20">
           {images.map((_, i) => (
             <div
               key={i}
@@ -108,12 +136,17 @@ export default function ProjectSection() {
           ))}
         </div>
       </div>
-      {/* 底部反向斜标签条 */}
-      <img
-        src="/src/assets/ProjectSection/Line2.svg"
-        alt="Slanted Tag Bar Bottom"
-        className="rotate-[5deg] mt-8"
-      />
+
+      {/* 底部无限滚动斜标签条 */}
+      <div className="absolute w-full bottom-0 left-0 z-30">
+        <ScrollVelocity
+          texts={[<SvgLine2 key={1} />]}
+          velocity={80} // 反向滚动
+          numCopies={6}
+          parallaxClassName="h-[15vh]"
+          scrollerClassName="flex gap-0 rotate-[5deg]  "
+        />
+      </div>
     </section>
   );
 }
