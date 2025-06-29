@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FallingText from "../blocks/TextAnimations/FallingText/FallingText";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
   const email = "kekezuiaidesky@gmail.com";
+
+  const topArrowRef = useRef(null);
+  const bottomArrowRef = useRef(null);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
@@ -11,10 +18,47 @@ export default function ContactSection() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  useEffect(() => {
+    if (!topArrowRef.current || !bottomArrowRef.current) return;
+
+    // 顶部蓝色箭头从左侧进入
+    gsap.fromTo(
+      topArrowRef.current,
+      { x: "-100%" },
+      {
+        x: "0%",
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: topArrowRef.current,
+          start: "top bottom",
+          end: "top center",
+          scrub: true,
+        },
+      }
+    );
+
+    // 底部橙色箭头从右侧进入
+    gsap.fromTo(
+      bottomArrowRef.current,
+      { x: "100%" },
+      {
+        x: "0%",
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: bottomArrowRef.current,
+          start: "top bottom",
+          end: "top center",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
   return (
     <section className="h-[25vh] sm:h-screen w-[100vw] text-black relative">
       {/* 顶部箭头 */}
       <img
+        ref={topArrowRef}
         src="/src/assets/ContactSection/Arrowline1.svg"
         alt="Top Arrows"
         className="w-[80vw] left-0"
@@ -77,7 +121,7 @@ export default function ContactSection() {
         </div>
 
         {/* Row 3: 左侧文字 + 右侧人物 */}
-        <div className="flex  h-[10vh] sm:flex-row text-white items-center justify-between mt-6 gap-6">
+        <div className="flex  h-[20vh] sm:flex-row text-white items-center justify-between mt-[8vw] gap-6">
           <FallingText
             text={`Interactive Critical Collaboration Teamwork Empathy`}
             highlightWords={["Interactive"]}
@@ -86,7 +130,7 @@ export default function ContactSection() {
             backgroundColor="transparent"
             wireframes={false}
             gravity={0.56}
-            fontSize="1rem"
+            fontSize="3rem"
             mouseConstraintStiffness={0.9}
           />
           <div className="w-[17vw]">
@@ -97,6 +141,7 @@ export default function ContactSection() {
 
       {/* 底部箭头 */}
       <img
+        ref={bottomArrowRef}
         src="/src/assets/ContactSection/Arrowline2.svg"
         alt="Bottom Arrows"
         className="pl-[20vw]"
