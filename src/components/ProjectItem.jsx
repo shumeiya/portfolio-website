@@ -95,7 +95,6 @@ const ProjectItem = ({
         className={`absolute left-1/2 -translate-x-1/2
           pointer-events-none ${MockupImageClassName}`}
         style={{ opacity: 0, transition: "opacity 0.05s" }}
-        alt="extra"
       />
       {/* Project Title */}
       <div

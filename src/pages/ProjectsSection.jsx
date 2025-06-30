@@ -24,9 +24,9 @@ export default function ProjectSection() {
   const [direction, setDirection] = useState(0);
 
   const images = [
-    "/src/assets/ProjectSection/1.png",
-    "/src/assets/ProjectSection/2.png",
-    "/src/assets/ProjectSection/3.png",
+    "/src/assets/ProjectSection/WeatherPets.jpg",
+    "/src/assets/ProjectSection/ABCMouse.png",
+    "/src/assets/ProjectSection/CodeMao.png",
   ];
 
   const paginate = (newDirection) => {
@@ -67,7 +67,7 @@ export default function ProjectSection() {
             initial={{ x: -100, scale: 0.9 }}
             animate={{ x: 0, scale: 0.9 }}
             exit={{ x: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.1 }}
           />
           {/* 左箭头 */}
           <button onClick={() => paginate(-1)} className="z-10">
@@ -84,18 +84,18 @@ export default function ProjectSection() {
               key={images[index]}
               src={images[index]}
               className="w-[50vw] h-[30vw] object-cover rounded-3xl 
-              border-2 z-10 shadow-lg"
+              z-10 shadow-lg"
               initial={{
                 x: direction > 0 ? 300 : -300,
                 opacity: 0,
                 scale: 0.95,
               }}
               animate={{ x: 0, opacity: 1, scale: 1 }}
-              exit={{ x: direction > 0 ? -300 : 300, opacity: 0, scale: 0.95 }}
+              // exit={{ x: direction > 0 ? -1 : 1, opacity: 0, scale: 0.95 }}
               transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.3 },
-                scale: { duration: 0.3 },
+                x: { type: "tween", duration: 0.2, ease: "easeOut" },
+                opacity: { duration: 0.1 },
+                scale: { duration: 0.1 },
               }}
               alt="Main"
             />

@@ -3,7 +3,7 @@ import ProjectItem from "../components/ProjectItem.jsx";
 
 export default function ProjectsSection() {
   return (
-    <section className="h-[20vh] sm:h-[90vh] w-[100vw] relative  sm:pt-[5vh]">
+    <section className="h-[20vh] sm:h-[100vh] w-[100vw] relative  sm:pt-[5vh]">
       <div className="flex flex-col justify-center">
         <ProjectItem
           name="SlowFood"
@@ -56,6 +56,15 @@ export default function ProjectsSection() {
           bgImageHover="/src/assets/ProjectSection2/HMI/LightBlueArrow.svg"
           MockupImage="/src/assets/ProjectSection2/HMI/HMIMockup.png"
           MockupImageClassName="h-[10vh] sm:h-[25vh] w-auto ml-[5vw] bottom-0"
+        />
+
+        <ProjectItem
+          name="Other Project"
+          icons={[]}
+          bgImage="/src/assets/ProjectSection2/WhiteArrow.svg"
+          bgImageHover="/src/assets/ProjectSection2/OrangeArrow.svg"
+          MockupImage=""
+          MockupImageClassName=""
         />
       </div>
     </section>
