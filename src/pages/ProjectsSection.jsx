@@ -40,94 +40,99 @@ export default function ProjectSection() {
   };
 
   return (
-    <section className="relative w-full h-screen  bg-[#FDF9F0] mt-[3vh]">
+    <section className="relative flex-row w-full h-[35vh] sm:h-[120vh] bg-[#FDF9F0] overflow-hidden">
       {/* 顶部无限滚动斜标签条 */}
-      <div className="absolute w-full">
+      <div className="relative w-full mt-0 sm:mt-[10vh]">
         <ScrollVelocity
           texts={[<SvgLine1 key={1} />]}
           velocity={-80}
           numCopies={6}
-          parallaxClassName="h-[15vh]"
+          parallaxClassName="h-[5vh] sm:h-[15vh]"
           scrollerClassName="flex gap-0 -rotate-[5deg]"
         />
       </div>
 
       {/* 项目展示区域 */}
       <div
-        className="relative w-full h-[25vh] sm:h-[80vh] pt-[12vh]
-      flex items-center justify-center"
+        className="relative w-full
+      flex-col items-center justify-center "
       >
-        {/* 左侧图片（模糊） */}
-        <motion.img
-          key={`left-${getImage(-1)}`}
-          src={getImage(-1)}
-          className="absolute -left-10 w-[18vw] h-[12vw] 
-            opacity-90 blur-xs rotate-[8deg] rounded-xl z-0 pointer-events-none"
-          initial={{ x: -100, scale: 0.9 }}
-          animate={{ x: 0, scale: 0.9 }}
-          exit={{ x: 0 }}
-          transition={{ duration: 0.4 }}
-        />
-        {/* 左箭头 */}
-        <button onClick={() => paginate(-1)} className="z-10">
-          <img
-            src="/src/assets/ProjectSection/Arrow.svg"
-            className="w-[6vw] h-auto pr-[1.2em]"
-            alt="Left"
-          />
-        </button>
-
-        {/* 中间轮播图片 */}
-        <AnimatePresence initial={false} custom={direction}>
+        <div className="relative w-full flex items-center justify-center mt-[3vh] ">
+          {/* 左侧图片（模糊） */}
           <motion.img
-            key={images[index]}
-            src={images[index]}
-            className="w-[50vw] h-[30vw] object-cover rounded-3xl 
+            key={`left-${getImage(-1)}`}
+            src={getImage(-1)}
+            className="absolute -left-10 w-[21vw] sm:w-[18vw] h-[18vw] sm:h-[12vw] 
+            opacity-90 blur-xs rotate-[8deg] rounded-xl z-0 pointer-events-none"
+            initial={{ x: -100, scale: 0.9 }}
+            animate={{ x: 0, scale: 0.9 }}
+            exit={{ x: 0 }}
+            transition={{ duration: 0.4 }}
+          />
+          {/* 左箭头 */}
+          <button onClick={() => paginate(-1)} className="z-10">
+            <img
+              src="/src/assets/ProjectSection/Arrow.svg"
+              className="w-[15vw] sm:w-[6vw] h-auto pr-[1.2em]"
+              alt="Left"
+            />
+          </button>
+
+          {/* 中间轮播图片 */}
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.img
+              key={images[index]}
+              src={images[index]}
+              className="w-[50vw] h-[30vw] object-cover rounded-3xl 
               border-2 z-10 shadow-lg"
-            initial={{
-              x: direction > 0 ? 300 : -300,
-              opacity: 0,
-              scale: 0.95,
-            }}
-            animate={{ x: 0, opacity: 1, scale: 1 }}
-            exit={{ x: direction > 0 ? -300 : 300, opacity: 0, scale: 0.95 }}
-            transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.3 },
-              scale: { duration: 0.3 },
-            }}
-            alt="Main"
-          />
-        </AnimatePresence>
+              initial={{
+                x: direction > 0 ? 300 : -300,
+                opacity: 0,
+                scale: 0.95,
+              }}
+              animate={{ x: 0, opacity: 1, scale: 1 }}
+              exit={{ x: direction > 0 ? -300 : 300, opacity: 0, scale: 0.95 }}
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.3 },
+                scale: { duration: 0.3 },
+              }}
+              alt="Main"
+            />
+          </AnimatePresence>
 
-        {/* 右箭头 */}
-        <button onClick={() => paginate(1)} className="z-10">
-          <img
-            src="/src/assets/ProjectSection/Arrow.svg"
-            className="w-[6vw] h-auto rotate-180 pr-[1.2em]"
-            alt="Right"
-          />
-        </button>
+          {/* 右箭头 */}
+          <button onClick={() => paginate(1)} className="z-10">
+            <img
+              src="/src/assets/ProjectSection/Arrow.svg"
+              className="w-[15vw] sm:w-[6vw] h-auto rotate-180 pr-[1.2em]"
+              alt="Right"
+            />
+          </button>
 
-        {/* 右侧图片（模糊） */}
-        <motion.img
-          key={`right-${getImage(1)}`}
-          src={getImage(1)}
-          className="absolute -right-10 w-[18vw] h-[12vw] 
+          {/* 右侧图片（模糊） */}
+          <motion.img
+            key={`right-${getImage(1)}`}
+            src={getImage(1)}
+            className="absolute -right-10 w-[18vw] h-[12vw] 
             opacity-90 blur-xs rotate-[5deg] rounded-xl z-0 pointer-events-none"
-          initial={{ x: 100, scale: 0.9 }}
-          animate={{ x: 0, scale: 0.9 }}
-          exit={{ x: 0 }}
-          transition={{ duration: 0.4 }}
-          alt="Right Blur"
-        />
+            initial={{ x: 100, scale: 0.9 }}
+            animate={{ x: 0, scale: 0.9 }}
+            exit={{ x: 0 }}
+            transition={{ duration: 0.4 }}
+            alt="Right Blur"
+          />
+        </div>
 
         {/* 底部圆点指示器 */}
-        <div className="absolute bottom-[-3%] flex gap-2 z-20">
+        <div
+          className="relative flex gap-2 mt-[2vh] sm:mt-[3vh] 
+         z-20 items-center justify-center"
+        >
           {images.map((_, i) => (
             <div
               key={i}
-              className={`w-[1.5vw] h-[1.5vw] rounded-full border-1 ${
+              className={`w-[3vw] h-[3vw] sm:w-[1.5vw] sm:h-[1.5vw] rounded-full border-1 ${
                 i === index ? "bg-blue-500" : "bg-white"
               }`}
             />
@@ -136,12 +141,12 @@ export default function ProjectSection() {
       </div>
 
       {/* 底部无限滚动斜标签条 */}
-      <div className="absolute w-full bottom-0 left-0 z-30">
+      <div className="relative w-full mt-0 sm:mt-[5vh] left-0 z-30">
         <ScrollVelocity
           texts={[<SvgLine2 key={1} />]}
           velocity={80} // 反向滚动
           numCopies={6}
-          parallaxClassName="h-[15vh]"
+          parallaxClassName="h-[3vh] sm:h-[15vh]"
           scrollerClassName="flex gap-0 rotate-[5deg]  "
         />
       </div>
