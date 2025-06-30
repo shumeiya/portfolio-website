@@ -27,8 +27,6 @@ export default function ProjectSection() {
     "/src/assets/ProjectSection/1.png",
     "/src/assets/ProjectSection/2.png",
     "/src/assets/ProjectSection/3.png",
-    "/src/assets/ProjectSection/4.png",
-    "/src/assets/ProjectSection/5.png",
   ];
 
   const paginate = (newDirection) => {
